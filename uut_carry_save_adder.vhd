@@ -27,77 +27,74 @@
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
- 
+USE std.env.finish;
+
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
 
 ENTITY uut_carry_save_adder_multiplier IS
 END uut_carry_save_adder_multiplier;
- 
-ARCHITECTURE behavior OF uut_carry_save_adder_multiplier IS 
- 
-    -- Component Declaration for the Unit Under Test (UUT)
- 
-    COMPONENT carry_save_adder_multiplier
-    PORT(
-         A : IN  std_logic_vector(3 downto 0);
-         B : IN  std_logic_vector(3 downto 0);
-         P : OUT  std_logic_vector(7 downto 0)
-        );
-    END COMPONENT;
-    
 
+ARCHITECTURE behavior OF uut_carry_save_adder_multiplier IS
+
+   -- Component Declaration for the Unit Under Test (UUT)
+
+   COMPONENT carry_save_adder_multiplier
+      PORT (
+         A : IN std_logic_vector(3 DOWNTO 0);
+         B : IN std_logic_vector(3 DOWNTO 0);
+         P : OUT std_logic_vector(7 DOWNTO 0)
+      );
+   END COMPONENT;
    --Inputs
-   signal A : std_logic_vector(3 downto 0) := (others => '0');
-   signal B : std_logic_vector(3 downto 0) := (others => '0');
+   SIGNAL A : std_logic_vector(3 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL B : std_logic_vector(3 DOWNTO 0) := (OTHERS => '0');
 
- 	--Outputs
-   signal P : std_logic_vector(7 downto 0);
+   --Outputs
+   SIGNAL P : std_logic_vector(7 DOWNTO 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
-  
+
 BEGIN
- 
-	-- Instantiate the Unit Under Test (UUT)
-   uut: carry_save_adder_multiplier PORT MAP (
-          A => A,
-          B => B,
-          P => P
-        );
+
+   -- Instantiate the Unit Under Test (UUT)
+   uut : carry_save_adder_multiplier PORT MAP(
+      A => A,
+      B => B,
+      P => P
+   );
 
    -- Stimulus process
-   stim_proc: process
-   begin		
+   stim_proc : PROCESS
+   BEGIN
       -- hold reset state for 100 ns.
-       wait for 100 ns;	
+      WAIT FOR 100 ns;
 
-		A <= "1001";
-		B <= "1010";
-		wait for 20 ns;
-		
-		A <= "0111";
-		B <= "1010";
-		wait for 20 ns;
-		
-		A <= "1001";
-		B <= "1011";
-		wait for 20 ns;
-		
-		A <= "1101";
-		B <= "0011";
-		wait for 20 ns;
-		
-		
-		A <= "1001";
-		B <= "1111";
-		wait for 20 ns;
-		
-		A <= "1111";
-		B <= "1111";
-		wait for 20 ns;
+      A <= "1001";
+      B <= "1010";
+      WAIT FOR 20 ns;
 
-      wait;
-   end process;
+      A <= "0111";
+      B <= "1010";
+      WAIT FOR 20 ns;
+
+      A <= "1001";
+      B <= "1011";
+      WAIT FOR 20 ns;
+
+      A <= "1101";
+      B <= "0011";
+      WAIT FOR 20 ns;
+      A <= "1001";
+      B <= "1111";
+      WAIT FOR 20 ns;
+
+      A <= "1111";
+      B <= "1111";
+      WAIT FOR 20 ns;
+
+      finish;
+   END PROCESS;
 
 END;
