@@ -27,6 +27,7 @@
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
+use std.env.finish;
  
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -97,7 +98,7 @@ BEGIN
 		B <= "1111";
 		wait for 20 ns;
 
-      wait;
+      finish;
    end process;
 
 END;
