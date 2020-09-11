@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "E:/Education/CA/Lab/LAB_5/Code/carry_save_adder_multiplier.xst" -ofn "E:/Education/CA/Lab/LAB_5/Code/carry_save_adder_multiplier.syr" 
+xst -intstyle ise -ifn "E:/Education/CA/Lab/LAB_5/Code/carry_save_adder_multiplier.xst" -ofn "E:/Education/CA/Lab/LAB_5/Code/carry_save_adder_multiplier.syr" 
